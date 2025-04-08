@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Sentiment Scraper</title>
+    <style>
+        body {
+            position: relative;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 3px 5px;
+            font-size: 1rem;
+        }
+
+        .about-button {
+            margin-top: 20px;
+        }
+        /* Position the side image at the bottom right of the page */
+        .side-image {
+            position: static;
+            bottom: 800px;
+            right: 0px;
+            max-width: auto;
+            height: auto;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Stock Sentiment Scraper</h1>
+        <form method="post">
+            <label for="stock_name">Stock Name (keyword):</label><br>
+            <input type="text" id="stock_name" name="stock_name" required><br><br>
+
+            <label for="max_posts">Max Posts:</label><br>
+            <input type="number" id="max_posts" name="max_posts" required><br><br>
+
+            <!-- Three separate submit buttons for the three models -->
+            <button type="submit" name="model_choice" value="model1">Use Model 1</button>
+            <button type="submit" name="model_choice" value="model2">Use Model 2</button>
+            <button type="submit" name="model_choice" value="model3">Use Model 3</button>
+        </form>
+        <br>
+        <a href="{{ url_for('about') }}">
+            <button type="button" class="about-button">About</button>
+        </a>
+    </div>
+    <!-- Side image positioned at the lower right -->
+    <img src="{{ url_for('static', filename='image2.png') }}" alt="Side Image" class="side-image">
+
+</body>
+</html>

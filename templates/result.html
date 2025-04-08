@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Analysis Result</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    p {
+      line-height: 1.8;
+      font-size: 1.2rem;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sentiment Analysis Result</h1>
+  <p>Total comments analyzed: {{ total }}</p>
+  <ul>
+    <li>Positive: {{ percentages['positive'] }}%</li>
+    <li>Neutral: {{ percentages['neutral'] }}%</li>
+    <li>Negative: {{ percentages['negative'] }}%</li>
+  </ul>
+  <a href="{{ url_for('index') }}">Go back</a>
+</body>
+</html>

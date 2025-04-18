@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search by Subreddit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input, button, .back-button {
+            padding: 8px;
+            margin: 10px;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #000;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search by Subreddit</h1>
+        <p>
+            For smaller stocks or crypto currencies with their own dedicated subreddit, you can filter by the stock's subreddit,
+            and the web scraper will scrape this subreddit without a specific keyword. this search feature uses model 1 by default (more details on this model choise in the "about" page)
+        </p>
+        <form method="post">
+            <input type="text" name="subreddit" placeholder="Subreddit" required>
+            <br>
+            <input type="number" name="max_posts" placeholder="Max Posts" required>
+            <br>
+            <button type="submit">Search</button>
+        </form>
+        <!-- Back button to return to the main index page -->
+        <a href="{{ url_for('index') }}" class="back-button">Back</a>
+    </div>
+</body>
+</html>

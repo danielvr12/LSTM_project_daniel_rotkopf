@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            direction: ltr; /* Ensure left-to-right text direction */
+        }
+        /* Center these headers */
+        h1, .section-header {
+            text-align: center;
+        }
+        /* Model headers are left-aligned with extra spacing */
+        .model-header {
+            text-align: left;
+            margin-top: 30px; /* space above the header */
+            margin-bottom: 10px; /* space below the header */
+        }
+        /* Increase the font size for description text and add spacing */
+        .description {
+            font-size: 20px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>About</h1>
+    <p class="description">
+        This is a sentiment analysis model, built by Daniel Rotkopf for his final project in machine learning.
+        There are three different models. All of the models were trained using the same dataset, built by scraping
+        the latest posts on r/stocks and labeling them using the ChatGPT4 API. Each model is built differently,
+        but all of them output three sentiment labels: positive, neutral, and negative.
+    </p>
+
+    <h1 class="section-header">How to Use</h1>
+    <p class="description">
+        NOTE THAT THE THE SCRAPING MIGHT TAKE A WHILE, SO PLEASE BE PATIENT, AND IT IS RECOCMMENDED TO USE MODEL 3 WITH MAX POSTS NUMBER OF 3 TO 5, AND USE BIGGER STOCKS LIKE NVIDIA AND TESLA FOR THE MOST ACCURATE RESULT.
+        To use this sentiment analysis model, simply input your text into the provided interface. The model will then
+        analyze the sentiment and output one of three labels, positive, neutral, or negative. It is designed to be intuitive
+        and easy to integrate into various applications.
+    </p>
+
+    <h1 class="section-header">Model Descriptions</h1>
+
+    <h2 class="model-header">Model 1</h2>
+    <p class="description">
+        The first model has about 13 million trainable parameters. It is built by having two separate inputs:
+        the comment and the original post that the comment is referring to. They are first tokenized by the GPT2
+        tokenizer and padded to a length of 200, then processed by separate embedding layers with an embedding
+        dimension of 128. Next, they go through separate masking and LSTM layers, each with 64 LSTM units.
+        Afterwards, they are combined by the concatenate layer and processed by the softmax layer.
+        This model has an accuracy of 96%. this is the default model for the search by subreddit feature, due to its tokenizer being trained on a bigger and general dataset without a bias to the r/stocks dataset.
+    </p>
+
+    <h2 class="model-header">Model 2</h2>
+    <p class="description">
+        The second model has the same amount of parameters, but the difference is that this model combines the post
+        and comment texts before tokenizing, meaning there is one embedding, masking, and LSTM layer. It also has
+        two ReLU layers. The padding of the text in this model is 500, and the embedding dimensions are 256,
+        resulting in an accuracy of 89%.
+    </p>
+
+    <h2 class="model-header">Model 3</h2>
+    <p class="description">
+        The third model is built similarly to the first one but uses a tokenizer built with the Hugging Face library.
+        It is trained on my dataset using the same BPE encoding as the GPT2 tokenizer. This model has 18 million
+        trainable parameters, with an accuracy of 98%.
+    </p>
+
+    <a href="{{ url_for('index') }}">Go back</a>
+</body>
+</html>
